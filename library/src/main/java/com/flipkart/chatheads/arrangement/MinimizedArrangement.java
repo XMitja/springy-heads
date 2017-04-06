@@ -24,16 +24,16 @@ public class MinimizedArrangement<T extends Serializable> extends ChatHeadArrang
     public static final String BUNDLE_HERO_RELATIVE_Y_KEY = "hero_relative_y";
     private static int MAX_VELOCITY_FOR_IDLING;
     private static int MIN_VELOCITY_TO_POSITION_BACK;
-    private float DELTA = 0;
-    private float currentDelta = 0;
+    float DELTA = 0;
+    float currentDelta = 0;
     private int idleStateX = Integer.MIN_VALUE;
     private int idleStateY = Integer.MIN_VALUE;
-    private int maxWidth;
+    int maxWidth;
     private int maxHeight;
     private boolean hasActivated = false;
     private ChatHeadManager<T> manager;
-    private SpringChain horizontalSpringChain;
-    private SpringChain verticalSpringChain;
+    SpringChain horizontalSpringChain;
+    SpringChain verticalSpringChain;
     private ChatHead hero;
     private double relativeXPosition = -1;
     private double relativeYPosition = -1;
@@ -69,7 +69,7 @@ public class MinimizedArrangement<T extends Serializable> extends ChatHeadArrang
             }
         }
     };
-    private boolean isTransitioning;
+    boolean isTransitioning;
 
     public MinimizedArrangement(ChatHeadManager manager) {
         this.manager = manager;
