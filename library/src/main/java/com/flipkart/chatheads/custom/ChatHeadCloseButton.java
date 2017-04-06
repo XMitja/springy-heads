@@ -16,7 +16,7 @@ import com.flipkart.chatheads.ChatHeadManager;
 import com.flipkart.chatheads.utils.SpringConfigsHolder;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class ChatHeadCloseButton extends ImageView {
+public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImageView {
 
     private static final float PERC_PARENT_WIDTH = 0.1f; //perc of parent to be covered during drag
     private static final float PERC_PARENT_HEIGHT = 0.05f; //perc of parent to be covered during drag
@@ -24,7 +24,7 @@ public class ChatHeadCloseButton extends ImageView {
     private int mParentHeight;
     private Spring scaleSpring;
     private Spring xSpring;
-    private Spring ySpring;
+    Spring ySpring;
     private boolean disappeared;
     private CloseButtonListener listener;
     private ChatHeadManager chatHeadManager;

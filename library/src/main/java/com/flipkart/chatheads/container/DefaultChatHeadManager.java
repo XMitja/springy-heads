@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.DisplayMetrics;
@@ -60,8 +61,6 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
     private boolean overlayVisible;
     private ImageView closeButtonShadow;
     private SpringSystem springSystem;
-    private FragmentManager fragmentManager;
-    private Fragment currentFragment;
     private ChatHeadConfig config;
     private ChatHeadListener listener;
     private Bundle activeArrangementBundle;
@@ -231,6 +230,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
     }
 
     @Override
+    @Nullable
     public ChatHead<T> findChatHeadByKey(T key) {
         for (ChatHead<T> chatHead : chatHeads) {
             if (chatHead.getKey().equals(key))
@@ -485,8 +485,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
 
     @Override
     public View attachView(ChatHead<T> activeChatHead, ViewGroup parent) {
-        View view = viewAdapter.attachView(activeChatHead.getKey(), activeChatHead, parent);
-        return view;
+        return viewAdapter.attachView(activeChatHead.getKey(), activeChatHead, parent);
     }
 
     @Override
