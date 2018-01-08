@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -126,8 +127,11 @@ public class WindowManagerContainer extends FrameChatHeadContainer {
         } else {
             focusableFlag = FLAG_NOT_TOUCHABLE | FLAG_NOT_FOCUSABLE;
         }
+        int overlayFlag =  Build.VERSION.SDK_INT < Build.VERSION_CODES.O ?
+                WindowManager.LayoutParams.TYPE_PHONE :
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(MATCH_PARENT, MATCH_PARENT,
-                TYPE_PHONE,
+                overlayFlag,
                 focusableFlag,
                 PixelFormat.TRANSLUCENT);
         layoutParams.x = 0;
