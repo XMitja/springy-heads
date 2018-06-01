@@ -1,21 +1,17 @@
 package com.flipkart.chatheads.custom;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.ImageView;
 
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringSystem;
 import com.facebook.rebound.SpringUtil;
-import com.flipkart.chatheads.R;
 import com.flipkart.chatheads.ChatHeadManager;
+import com.flipkart.chatheads.R;
 import com.flipkart.chatheads.utils.SpringConfigsHolder;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImageView {
 
     private static final float PERC_PARENT_WIDTH = 0.1f; //perc of parent to be covered during drag
@@ -33,7 +29,7 @@ public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImag
 
     public ChatHeadCloseButton(Context context, ChatHeadManager manager, int maxHeight, int maxWidth) {
         super(context);
-        init(manager, maxHeight, maxWidth);
+        init(manager);
     }
 
     public void setListener(CloseButtonListener listener) {
@@ -44,7 +40,7 @@ public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImag
         return disappeared;
     }
 
-    private void init(final ChatHeadManager manager, int maxHeight, int maxWidth) {
+    private void init(final ChatHeadManager manager) {
         this.chatHeadManager = manager;
 
         setImageResource(R.drawable.dismiss_big);
@@ -111,7 +107,7 @@ public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImag
         scaleSpring.setEndValue(0.8);
     }
 
-    public void disappear(boolean immediate, boolean animate) {
+    public void disappear(boolean animate) {
         ySpring.setEndValue(mParentHeight - centerY + chatHeadManager.getConfig().getCloseButtonHeight());
         ySpring.setSpringConfig(SpringConfigsHolder.NOT_DRAGGING);
         xSpring.setEndValue(0);
@@ -135,7 +131,7 @@ public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImag
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        disappear(true, false);
+        disappear(false);
     }
 
     public void onParentHeightRefreshed() {
@@ -173,9 +169,11 @@ public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImag
         return SpringUtil.mapValueFromRangeToRange(springValue, 0, fullValue, -widthToCover / 2, widthToCover / 2);
     }
 
+    /*
     public boolean isAtRest() {
         return xSpring.isAtRest() && ySpring.isAtRest();
     }
+    */
 
     public int getEndValueX() {
         return getXFromSpring(xSpring);

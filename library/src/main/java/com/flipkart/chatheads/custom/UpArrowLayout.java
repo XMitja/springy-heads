@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class UpArrowLayout extends ViewGroup {
     private final Point pointTo = new Point(0, 0);
-    private final ArrayList<View> mMatchParentChildren = new ArrayList<View>(1);
+    private final ArrayList<View> mMatchParentChildren = new ArrayList<>(1);
     private ImageView arrowView;
     private int arrowDrawable = R.drawable.chat_top_arrow;
 
@@ -37,6 +37,7 @@ public class UpArrowLayout extends ViewGroup {
         init();
     }
 
+    /*
     public int getArrowDrawable() {
         return arrowDrawable;
     }
@@ -45,6 +46,7 @@ public class UpArrowLayout extends ViewGroup {
         this.arrowDrawable = arrowDrawable;
         init();
     }
+    */
 
     private void init() {
         if (arrowView != null) {
@@ -89,7 +91,7 @@ public class UpArrowLayout extends ViewGroup {
             if (child == arrowView) continue;
             if (child.getVisibility() != GONE) {
                 measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
-                final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+                final LayoutParams lp = child.getLayoutParams();
                 maxWidth = Math.max(maxWidth,
                         child.getMeasuredWidth());
                 maxHeight = Math.max(maxHeight,
@@ -181,7 +183,7 @@ public class UpArrowLayout extends ViewGroup {
 
 
     private void updatePointer() {
-        int x = (int) (pointTo.x - arrowView.getMeasuredWidth() / 2);
+        int x = pointTo.x - arrowView.getMeasuredWidth() / 2;
         int y = pointTo.y;
         if (x != arrowView.getTranslationX()) {
             arrowView.setTranslationX(x);

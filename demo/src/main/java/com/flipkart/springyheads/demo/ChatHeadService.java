@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.flipkart.chatheads.ChatHead;
-import com.flipkart.chatheads.ChatHeadContainer;
 import com.flipkart.chatheads.ChatHeadListener;
 import com.flipkart.chatheads.ChatHeadManager;
 import com.flipkart.chatheads.ChatHeadViewAdapter;
@@ -34,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+@SuppressWarnings("deprecation")
 public class ChatHeadService extends Service {
 
     private static final String TAG = "ChatHeadService";
@@ -54,7 +54,7 @@ public class ChatHeadService extends Service {
         super.onCreate();
 
         windowManagerContainer = new WindowManagerContainer(this);
-        chatHeadManager = new DefaultChatHeadManager<String>(this, windowManagerContainer);
+        chatHeadManager = new DefaultChatHeadManager<>(this, windowManagerContainer);
 
         // The view adapter is invoked when someone clicks a chat head.
         chatHeadManager.setViewAdapter(new ChatHeadViewAdapter<String>() {
@@ -190,7 +190,7 @@ public class ChatHeadService extends Service {
         chatHeadIdentifier++;
         // you can even pass a custom object instead of "head0"
         // a sticky chat head (passed as 'true') cannot be closed and will remain when all other chat heads are closed.
-        /**
+        /*
          * In this example a String object (identified by chatHeadIdentifier) is attached to each chat head.
          * You can instead attach any custom object, for e.g a Conversation object to denote each chat head.
          * This object will represent a chat head uniquely and will be passed back in all callbacks.

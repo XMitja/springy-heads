@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 27
     resourcePrefix "chatheads_"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 27
     }
     buildTypes {
@@ -14,16 +15,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     //implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.facebook.rebound:rebound:0.3.7'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 
 buildscript {
+    ext.kotlin_version = '1.2.41'
     repositories {
         jcenter()
         maven { url 'https://plugins.gradle.org/m2/' }
@@ -34,6 +42,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -42,4 +51,7 @@ configurations {
 }
 
 dependencies {
+}
+repositories {
+    mavenCentral()
 }

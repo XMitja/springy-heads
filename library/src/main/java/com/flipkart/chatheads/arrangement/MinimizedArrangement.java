@@ -459,7 +459,7 @@ public class MinimizedArrangement<T extends Serializable> extends ChatHeadArrang
             int[] coords = manager.getChatHeadCoordsForCloseButton(activeChatHead);
             double distanceCloseButtonFromHead = manager.getDistanceCloseButtonFromHead((float) activeHorizontalSpring.getCurrentValue() + manager.getConfig().getHeadWidth() / 2, (float) activeVerticalSpring.getCurrentValue() + manager.getConfig().getHeadHeight() / 2);
 
-            if (distanceCloseButtonFromHead < activeChatHead.CLOSE_ATTRACTION_THRESHOLD && activeHorizontalSpring.getSpringConfig() == SpringConfigsHolder.DRAGGING && activeVerticalSpring.getSpringConfig() == SpringConfigsHolder.DRAGGING) {
+            if (distanceCloseButtonFromHead < activeChatHead.getCLOSE_ATTRACTION_THRESHOLD() && activeHorizontalSpring.getSpringConfig() == SpringConfigsHolder.DRAGGING && activeVerticalSpring.getSpringConfig() == SpringConfigsHolder.DRAGGING) {
                 activeHorizontalSpring.setSpringConfig(SpringConfigsHolder.NOT_DRAGGING);
                 activeVerticalSpring.setSpringConfig(SpringConfigsHolder.NOT_DRAGGING);
                 activeChatHead.setState(ChatHead.State.CAPTURED);
@@ -475,13 +475,13 @@ public class MinimizedArrangement<T extends Serializable> extends ChatHeadArrang
 
             }
             if (activeChatHead.getState() == ChatHead.State.CAPTURED && activeVerticalSpring.isAtRest()) {
-                manager.getCloseButton().disappear(false, true);
+                manager.getCloseButton().disappear(true);
                 manager.captureChatHeads(activeChatHead);
             }
             if (!activeVerticalSpring.isAtRest() && !isTransitioning) {
                 manager.getCloseButton().appear();
             } else {
-                manager.getCloseButton().disappear(true, true);
+                manager.getCloseButton().disappear(true);
             }
         }
 

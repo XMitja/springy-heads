@@ -2,7 +2,6 @@ package com.flipkart.chatheads.container;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathDashPathEffect;
 import android.graphics.PathEffect;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -88,7 +86,6 @@ public class ChatHeadOverlayView extends View {
         invalidate();
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void animatePath() {
         animator.start();
 

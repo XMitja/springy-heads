@@ -11,6 +11,6 @@ public interface ChatHeadListener<T> {
     void onChatHeadAdded(T key);
     void onChatHeadRemoved(T key, boolean userTriggered);
     void onChatHeadArrangementChanged(ChatHeadArrangement oldArrangement, ChatHeadArrangement newArrangement);
-    <T extends Serializable> void onChatHeadAnimateEnd(ChatHead<T> chatHead);
-    <T extends Serializable> void onChatHeadAnimateStart(ChatHead chatHead);
+    void onChatHeadAnimateEnd(ChatHead chatHead);
+    void onChatHeadAnimateStart(ChatHead chatHead);
 }

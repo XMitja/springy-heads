@@ -18,7 +18,7 @@ public abstract class FrameChatHeadContainer implements ChatHeadContainer {
 
     private HostFrameLayout frameLayout;
     private final Context context;
-    DisplayMetrics displayMetrics = new DisplayMetrics();
+    private DisplayMetrics displayMetrics = new DisplayMetrics();
     private ChatHeadManager manager;
 
     public FrameChatHeadContainer(Context context) {
@@ -33,7 +33,7 @@ public abstract class FrameChatHeadContainer implements ChatHeadContainer {
     @Override
     public void onInitialized(ChatHeadManager manager) {
         this.manager = manager;
-        HostFrameLayout frameLayout = new HostFrameLayout(context, this, manager);
+        HostFrameLayout frameLayout = new HostFrameLayout(context, manager);
         frameLayout.setFocusable(true);
         frameLayout.setFocusableInTouchMode(true);
         this.frameLayout = frameLayout;

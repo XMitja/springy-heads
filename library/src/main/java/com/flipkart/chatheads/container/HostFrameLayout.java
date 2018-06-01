@@ -1,24 +1,23 @@
 package com.flipkart.chatheads.container;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
-import com.flipkart.chatheads.ChatHeadContainer;
 import com.flipkart.chatheads.ChatHeadManager;
 import com.flipkart.chatheads.arrangement.MinimizedArrangement;
 
 /**
  * Created by kiran.kumar on 11/11/16.
  */
+@SuppressLint("ViewConstructor")
 public class HostFrameLayout extends FrameLayout {
     private final ChatHeadManager manager;
-    private final ChatHeadContainer container;
 
-    public HostFrameLayout(Context context, ChatHeadContainer chatHeadContainer, ChatHeadManager manager) {
+    public HostFrameLayout(Context context, ChatHeadManager manager) {
         super(context);
         this.manager = manager;
-        this.container = chatHeadContainer;
     }
 
     @Override

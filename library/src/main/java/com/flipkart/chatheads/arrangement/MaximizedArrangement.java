@@ -1,8 +1,6 @@
 package com.flipkart.chatheads.arrangement;
 
-import android.annotation.TargetApi;
 import android.graphics.Point;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
 import android.view.View;
@@ -11,8 +9,8 @@ import android.view.ViewGroup;
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.flipkart.chatheads.ChatHead;
-import com.flipkart.chatheads.config.ChatHeadConfig;
 import com.flipkart.chatheads.ChatHeadManager;
+import com.flipkart.chatheads.config.ChatHeadConfig;
 import com.flipkart.chatheads.custom.UpArrowLayout;
 import com.flipkart.chatheads.utils.ChatHeadUtils;
 import com.flipkart.chatheads.utils.SpringConfigsHolder;
@@ -21,7 +19,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MaximizedArrangement<T extends Serializable> extends ChatHeadArrangement {
     public static final String BUNDLE_HERO_INDEX_KEY = "hero_index";
     private static double MAX_DISTANCE_FROM_ORIGINAL;
@@ -252,7 +249,7 @@ public class MaximizedArrangement<T extends Serializable> extends ChatHeadArrang
             int[] coords = manager.getChatHeadCoordsForCloseButton(activeChatHead);
             double distanceCloseButtonFromHead = manager.getDistanceCloseButtonFromHead((float) activeHorizontalSpring.getCurrentValue() + manager.getConfig().getHeadWidth() / 2, (float) activeVerticalSpring.getCurrentValue() + manager.getConfig().getHeadHeight() / 2);
 
-            if (distanceCloseButtonFromHead < activeChatHead.CLOSE_ATTRACTION_THRESHOLD && activeHorizontalSpring.getSpringConfig() == SpringConfigsHolder.DRAGGING && activeVerticalSpring.getSpringConfig() == SpringConfigsHolder.DRAGGING && !activeChatHead.isSticky()) {
+            if (distanceCloseButtonFromHead < activeChatHead.getCLOSE_ATTRACTION_THRESHOLD() && activeHorizontalSpring.getSpringConfig() == SpringConfigsHolder.DRAGGING && activeVerticalSpring.getSpringConfig() == SpringConfigsHolder.DRAGGING && !activeChatHead.isSticky()) {
 
                 activeHorizontalSpring.setSpringConfig(SpringConfigsHolder.NOT_DRAGGING);
                 activeVerticalSpring.setSpringConfig(SpringConfigsHolder.NOT_DRAGGING);
@@ -268,13 +265,13 @@ public class MaximizedArrangement<T extends Serializable> extends ChatHeadArrang
 
             }
             if (activeChatHead.getState() == ChatHead.State.CAPTURED && activeVerticalSpring.isAtRest()) {
-                manager.getCloseButton().disappear(false, true);
+                manager.getCloseButton().disappear(true);
                 manager.captureChatHeads(activeChatHead);
             }
             if (!activeVerticalSpring.isAtRest() && !isTransitioning) {
                 manager.getCloseButton().appear();
             } else {
-                manager.getCloseButton().disappear(true, true);
+                manager.getCloseButton().disappear(true);
             }
         }
     }
