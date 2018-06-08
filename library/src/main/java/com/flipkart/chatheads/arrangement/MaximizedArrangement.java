@@ -27,12 +27,12 @@ public class MaximizedArrangement<T extends Serializable> extends ChatHeadArrang
     private ChatHeadManager<T> manager;
     private int maxWidth;
     private int maxHeight;
-    private ChatHead currentChatHead = null;
+    ChatHead currentChatHead = null;
     private UpArrowLayout arrowLayout;
     private int maxDistanceFromOriginal;
     private int topPadding;
     private boolean isActive = false;
-    private boolean isTransitioning = false;
+    boolean isTransitioning = false;
     private Bundle extras;
 
     public MaximizedArrangement(ChatHeadManager<T> manager) {
@@ -410,7 +410,7 @@ public class MaximizedArrangement<T extends Serializable> extends ChatHeadArrang
         return bundle;
     }
 
-    private void deactivate() {
+    void deactivate() {
         manager.setArrangement(MinimizedArrangement.class, getBundleWithHero());
         hideView();
     }

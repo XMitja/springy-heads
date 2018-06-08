@@ -3,6 +3,7 @@ package com.flipkart.chatheads.custom;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ public class UpArrowLayout extends ViewGroup {
     private final Point pointTo = new Point(0, 0);
     private final ArrayList<View> mMatchParentChildren = new ArrayList<>(1);
     private ImageView arrowView;
-    private int arrowDrawable = R.drawable.chat_top_arrow;
+    private int arrowDrawable = R.drawable.chatheads_chat_top_arrow;
 
     public UpArrowLayout(Context context) {
         super(context);
@@ -57,7 +58,7 @@ public class UpArrowLayout extends ViewGroup {
     }
 
     protected ImageView createArrowView() {
-        Drawable drawable = getResources().getDrawable(arrowDrawable);
+        Drawable drawable = ContextCompat.getDrawable(getContext(), arrowDrawable);
         ImageView imageView = new ImageView(getContext());
         imageView.setImageDrawable(drawable);
         return imageView;

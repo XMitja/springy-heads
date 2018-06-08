@@ -24,7 +24,7 @@ public class MinimizedArrangement<T extends Serializable> extends ChatHeadArrang
     public static final String BUNDLE_HERO_RELATIVE_Y_KEY = "hero_relative_y";
     private static int MAX_VELOCITY_FOR_IDLING;
     private static int MIN_VELOCITY_TO_POSITION_BACK;
-    float DELTA = 0;
+    float DELTA;
     float currentDelta = 0;
     private int idleStateX = Integer.MIN_VALUE;
     private int idleStateY = Integer.MIN_VALUE;
@@ -41,7 +41,7 @@ public class MinimizedArrangement<T extends Serializable> extends ChatHeadArrang
     private SpringListener horizontalHeroListener = new SimpleSpringListener() {
         @Override
         public void onSpringUpdate(Spring spring) {
-            currentDelta = (float) ((float) DELTA * (maxWidth / 2 - spring.getCurrentValue()) / (maxWidth / 2));
+            currentDelta = (float) (DELTA * (maxWidth / 2 - spring.getCurrentValue()) / (maxWidth / 2));
             if (horizontalSpringChain != null)
                 horizontalSpringChain.getControlSpring().setCurrentValue(spring.getCurrentValue());
         }
@@ -425,11 +425,8 @@ public class MinimizedArrangement<T extends Serializable> extends ChatHeadArrang
                     activeHorizontalSpring.setSpringConfig(SpringConfigsHolder.NOT_DRAGGING);
                     activeHorizontalSpring.setEndValue(0);
 
-                } else {
-                    //within bound
+                }  //within bound
 
-
-                }
             } else if (spring == activeVerticalSpring) {
                 double yPosition = activeVerticalSpring.getCurrentValue();
                 if (yPosition + manager.getConfig().getHeadWidth() > maxHeight && activeVerticalSpring.getVelocity() > 0) {
@@ -444,16 +441,15 @@ public class MinimizedArrangement<T extends Serializable> extends ChatHeadArrang
 
                     activeVerticalSpring.setSpringConfig(SpringConfigsHolder.NOT_DRAGGING);
                     activeVerticalSpring.setEndValue(0);
-                } else {
-                    //within bound
-                }
+                }  //within bound
+
 
             }
         }
 
         if (!isDragging && activeChatHead == hero) {
 
-            /** Capturing check **/
+            /* Capturing check **/
 
 
             int[] coords = manager.getChatHeadCoordsForCloseButton(activeChatHead);

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="overlay_color">#AA000000</color>
+    <color name="chatheads_overlay_color">#AA000000</color>
 </resources>

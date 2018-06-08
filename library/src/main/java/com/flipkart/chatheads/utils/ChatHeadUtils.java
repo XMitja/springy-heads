@@ -10,7 +10,7 @@ import android.view.WindowManager;
  */
 public class ChatHeadUtils {
 
-    /**
+    /*
      * Faster than {@link #dpToPx(Context, int)} since metrics is already present.
      * Use this is you are able to cache the reference to display metrics
      * @param metrics
@@ -34,7 +34,6 @@ public class ChatHeadUtils {
 
     public static int pxToDp(Context context, int px) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        int dp = Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        return dp;
+        return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 }

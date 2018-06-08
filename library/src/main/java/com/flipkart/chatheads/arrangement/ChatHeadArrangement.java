@@ -11,6 +11,7 @@ import com.flipkart.chatheads.ChatHeadManager;
 /**
  * Created by kirankumar on 13/02/15.
  */
+@SuppressWarnings("unused")
 public abstract class ChatHeadArrangement {
     public abstract void setContainer(ChatHeadManager container);
 

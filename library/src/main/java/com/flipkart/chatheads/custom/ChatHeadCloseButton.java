@@ -1,5 +1,6 @@
 package com.flipkart.chatheads.custom;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -12,6 +13,7 @@ import com.flipkart.chatheads.ChatHeadManager;
 import com.flipkart.chatheads.R;
 import com.flipkart.chatheads.utils.SpringConfigsHolder;
 
+@SuppressLint("ViewConstructor")
 public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImageView {
 
     private static final float PERC_PARENT_WIDTH = 0.1f; //perc of parent to be covered during drag
@@ -43,7 +45,7 @@ public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImag
     private void init(final ChatHeadManager manager) {
         this.chatHeadManager = manager;
 
-        setImageResource(R.drawable.dismiss_big);
+        setImageResource(R.drawable.chatheads_dismiss_big);
         SpringSystem springSystem = SpringSystem.create();
         xSpring = springSystem.createSpring();
         xSpring.addListener(new SimpleSpringListener() {
@@ -74,11 +76,11 @@ public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImag
         });
     }
 
-    private int getYFromSpring(Spring spring) {
+    int getYFromSpring(Spring spring) {
         return centerY + (int) spring.getCurrentValue() - getMeasuredHeight() / 2;
     }
 
-    private int getXFromSpring(Spring spring) {
+    int getXFromSpring(Spring spring) {
         return centerX + (int) spring.getCurrentValue() - getMeasuredWidth() / 2;
     }
 

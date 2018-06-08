@@ -21,6 +21,7 @@ import java.util.List;
  * Created by kiran.kumar on 27/10/16.
  */
 
+@SuppressWarnings({"UnusedReturnValue", "JavadocReference", "JavaDoc", "unused"})
 public interface ChatHeadManager<T extends Serializable> {
     ChatHeadListener getListener();
 

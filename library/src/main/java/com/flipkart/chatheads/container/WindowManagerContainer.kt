@@ -205,6 +205,7 @@ class WindowManagerContainer(context: Context) : FrameChatHeadContainer(context)
     }
     */
 
+    @Suppress("unused")
     fun destroy() {
         windowManager.removeViewImmediate(motionCaptureView)
         windowManager.removeViewImmediate(frameLayout)

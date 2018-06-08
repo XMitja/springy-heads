@@ -310,7 +310,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
                 Gravity.BOTTOM,
                 0);
 
-        closeButtonShadow.setImageResource(R.drawable.dismiss_shadow);
+        closeButtonShadow.setImageResource(R.drawable.chatheads_dismiss_shadow);
         closeButtonShadow.setVisibility(View.GONE);
         chatHeadContainer.addView(closeButtonShadow, shadowLayoutParams);
         arrangements.put(MinimizedArrangement.class, new MinimizedArrangement(this));
@@ -323,7 +323,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
 
     private void setupOverlay(Context context) {
         overlayView = new ChatHeadOverlayView(context);
-        overlayView.setBackgroundResource(R.drawable.overlay_transition);
+        overlayView.setBackgroundResource(R.drawable.chatheads_overlay_transition);
         ViewGroup.LayoutParams layoutParams = getChatHeadContainer().createLayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.MATCH_PARENT,
