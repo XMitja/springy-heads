@@ -17,7 +17,7 @@ import java.io.Serializable
 /**
  * Created by kirankumar on 10/02/15.
  */
-class ChatHead<T : Serializable> : android.support.v7.widget.AppCompatImageView, SpringListener {
+class ChatHead<T : Serializable> : androidx.appcompat.widget.AppCompatImageView, SpringListener {
 
     @Suppress("PropertyName")
     val CLOSE_ATTRACTION_THRESHOLD = ChatHeadUtils.dpToPx(context, 110)

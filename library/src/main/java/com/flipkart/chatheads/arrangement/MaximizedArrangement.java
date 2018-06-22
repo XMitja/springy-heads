@@ -2,7 +2,7 @@ package com.flipkart.chatheads.arrangement;
 
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.v4.util.ArrayMap;
+import androidx.collection.ArrayMap;
 import android.view.View;
 import android.view.ViewGroup;
 

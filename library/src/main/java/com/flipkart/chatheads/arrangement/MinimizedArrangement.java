@@ -2,7 +2,7 @@ package com.flipkart.chatheads.arrangement;
 
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;

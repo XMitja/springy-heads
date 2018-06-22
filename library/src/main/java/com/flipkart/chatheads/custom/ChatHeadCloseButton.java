@@ -14,7 +14,7 @@ import com.flipkart.chatheads.R;
 import com.flipkart.chatheads.utils.SpringConfigsHolder;
 
 @SuppressLint("ViewConstructor")
-public class ChatHeadCloseButton extends android.support.v7.widget.AppCompatImageView {
+public class ChatHeadCloseButton extends androidx.appcompat.widget.AppCompatImageView {
 
     private static final float PERC_PARENT_WIDTH = 0.1f; //perc of parent to be covered during drag
     private static final float PERC_PARENT_HEIGHT = 0.05f; //perc of parent to be covered during drag

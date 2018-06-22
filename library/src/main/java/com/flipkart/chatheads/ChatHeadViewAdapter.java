@@ -8,8 +8,10 @@ import com.flipkart.chatheads.arrangement.MaximizedArrangement;
 
 import java.io.Serializable;
 
+import androidx.viewpager.widget.PagerAdapter;
+
 /**
- * An adapter to provide views. Inspired by {@link android.support.v4.view.PagerAdapter}
+ * An adapter to provide views. Inspired by {@link PagerAdapter}
  */
 public interface ChatHeadViewAdapter<T> {
 
