@@ -23,6 +23,7 @@ class ChatHead<T : Serializable> : androidx.appcompat.widget.AppCompatImageView,
     val CLOSE_ATTRACTION_THRESHOLD = ChatHeadUtils.dpToPx(context, 110)
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     //private final float DELTA = ChatHeadUtils.dpToPx(getContext(), 10);
+    @Suppress("JoinDeclarationAndAssignment")
     private lateinit var manager: ChatHeadManager<*>
     private lateinit var springSystem: SpringSystem
     var isSticky: Boolean = false
@@ -172,7 +173,7 @@ class ChatHead<T : Serializable> : androidx.appcompat.widget.AppCompatImageView,
             }
             activeHorizontalSpring!!.springConfig = SpringConfigsHolder.NOT_DRAGGING
             activeVerticalSpring!!.springConfig = SpringConfigsHolder.NOT_DRAGGING
-            state = ChatHead.State.FREE
+            state = State.FREE
             downX = rawX
             downY = rawY
             downTranslationX = activeHorizontalSpring.currentValue.toFloat()
@@ -197,7 +198,7 @@ class ChatHead<T : Serializable> : androidx.appcompat.widget.AppCompatImageView,
                 if (manager.activeArrangement.canDrag(this)) {
                     val distanceCloseButtonFromHead = manager.getDistanceCloseButtonFromHead(rawX, rawY)
                     if (distanceCloseButtonFromHead < CLOSE_ATTRACTION_THRESHOLD && showCloseButton) {
-                        state = ChatHead.State.CAPTURED
+                        state = State.CAPTURED
                         activeHorizontalSpring!!.springConfig = SpringConfigsHolder.NOT_DRAGGING
                         activeVerticalSpring!!.springConfig = SpringConfigsHolder.NOT_DRAGGING
                         val coords = manager.getChatHeadCoordsForCloseButton(this)
@@ -206,7 +207,7 @@ class ChatHead<T : Serializable> : androidx.appcompat.widget.AppCompatImageView,
                         manager.closeButton.onCapture()
 
                     } else {
-                        state = ChatHead.State.FREE
+                        state = State.FREE
                         activeHorizontalSpring!!.springConfig = SpringConfigsHolder.DRAGGING
                         activeVerticalSpring!!.springConfig = SpringConfigsHolder.DRAGGING
                         activeHorizontalSpring.currentValue = (downTranslationX + offsetX).toDouble()
