@@ -101,9 +101,9 @@ class WindowManagerContainer(context: Context) : FrameChatHeadContainer(context)
         }
         @Suppress("DEPRECATION")
         val overlayFlag = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
-            WindowManager.LayoutParams.TYPE_PHONE
+            TYPE_PHONE
         else
-            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+            TYPE_APPLICATION_OVERLAY
         val layoutParams = WindowManager.LayoutParams(MATCH_PARENT, MATCH_PARENT,
                 overlayFlag,
                 focusableFlag,
