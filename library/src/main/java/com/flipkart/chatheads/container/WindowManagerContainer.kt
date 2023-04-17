@@ -21,6 +21,7 @@ import com.flipkart.chatheads.arrangement.MinimizedArrangement
  * Created by kiran.kumar on 08/11/16.
  */
 
+@Suppress("DEPRECATION")
 class WindowManagerContainer(context: Context) : FrameChatHeadContainer(context) {
     /**
      * A transparent view of the size of chat head which capture motion events and delegates them to the real view (frame layout)
