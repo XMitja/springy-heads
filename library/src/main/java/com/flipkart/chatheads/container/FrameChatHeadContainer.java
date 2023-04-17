@@ -14,11 +14,12 @@ import com.flipkart.chatheads.ChatHeadManager;
  * Created by kiran.kumar on 02/11/16.
  */
 
+@SuppressWarnings("rawtypes")
 public abstract class FrameChatHeadContainer implements ChatHeadContainer {
 
     private HostFrameLayout frameLayout;
     private final Context context;
-    private DisplayMetrics displayMetrics = new DisplayMetrics();
+    private final DisplayMetrics displayMetrics = new DisplayMetrics();
     private ChatHeadManager manager;
 
     public FrameChatHeadContainer(Context context) {

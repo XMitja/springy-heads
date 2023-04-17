@@ -2,13 +2,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 29
+    namespace "com.flipkart.chatheads"
+    compileSdkVersion 33
     resourcePrefix "chatheads_"
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 21
         //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 29
+        targetSdkVersion 33
     }
     buildTypes {
         release {
@@ -18,8 +19,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 

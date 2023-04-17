@@ -40,6 +40,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings({"rawtypes", "PatternVariableCanBeUsed", "unchecked", "SingleStatementInBlock", "RedundantIfStatement", "ConstantConditions", "CommentedOutCode"})
 public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadCloseButton.CloseButtonListener, ChatHeadManager<T> {
 
     private static final int OVERLAY_TRANSITION_DURATION = 200;
@@ -158,6 +159,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
     }
 
 
+    @SuppressLint("DrawAllocation")
     @Override
     public void onMeasure(int height, int width) {
         boolean needsLayout = false;
@@ -313,7 +315,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
         closeButtonShadow.setImageResource(R.drawable.chatheads_dismiss_shadow);
         closeButtonShadow.setVisibility(View.GONE);
         chatHeadContainer.addView(closeButtonShadow, shadowLayoutParams);
-        arrangements.put(MinimizedArrangement.class, new MinimizedArrangement(this));
+        arrangements.put(MinimizedArrangement.class, new MinimizedArrangement<>(this));
         arrangements.put(MaximizedArrangement.class, new MaximizedArrangement<>(this));
         setupOverlay(context);
         setConfig(chatHeadDefaultConfig);
@@ -339,7 +341,9 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
 
         int left = closeButton.getLeft();
         int top = closeButton.getTop();
+        //noinspection IntegerDivisionInFloatingPointContext
         double xDiff = touchX - left - getChatHeadContainer().getViewX(closeButton) - closeButton.getMeasuredWidth() / 2;
+        //noinspection IntegerDivisionInFloatingPointContext
         double yDiff = touchY - top - getChatHeadContainer().getViewY(closeButton) - closeButton.getMeasuredHeight() / 2;
         return Math.hypot(xDiff, yDiff);
     }
@@ -390,6 +394,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
             oldArrangement = activeArrangement;
         }
         activeArrangement = requestedArrangement;
+        //noinspection ConstantConditions
         requestedArrangement.onActivate(this, extras, maxWidth, maxHeight, requestedArrangementParam.isAnimated());
         if (hasChanged) {
             chatHeadContainer.onArrangementChanged(oldArrangement, requestedArrangement);
@@ -582,7 +587,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
 
 
     static class SavedState extends View.BaseSavedState {
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<>() {
 
             @Override
             public SavedState createFromParcel(Parcel source) {
@@ -598,6 +603,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
         private Bundle activeArrangementBundle;
         private LinkedHashMap<? extends Serializable, Boolean> chatHeads;
 
+        @SuppressLint("ParcelClassLoader")
         SavedState(Parcel source) {
             super(source);
             activeArrangement = (Class<? extends ChatHeadArrangement>) source.readSerializable();
@@ -642,6 +648,7 @@ public class DefaultChatHeadManager<T extends Serializable> implements ChatHeadC
         }
     }
 
+    @SuppressWarnings("InnerClassMayBeStatic")
     private class ArrangementChangeRequest {
         private final Bundle extras;
         private final Class<? extends ChatHeadArrangement> arrangement;

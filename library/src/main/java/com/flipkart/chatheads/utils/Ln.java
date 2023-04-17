@@ -50,6 +50,7 @@ import android.util.Log;
  *
  */
 
+@SuppressWarnings("unused")
 public class Ln  {
     /**
      * config is initially set to BaseConfig() with sensible defaults, then replaced
@@ -225,22 +226,16 @@ public class Ln  {
     }
 
     static String logLevelToString(int loglevel) {
-        switch( loglevel ) {
-            case Log.VERBOSE:
-                return "VERBOSE";
-            case Log.DEBUG:
-                return "DEBUG";
-            case Log.INFO:
-                return "INFO";
-            case Log.WARN:
-                return "WARN";
-            case Log.ERROR:
-                return "ERROR";
-            case Log.ASSERT:
-                return "ASSERT";
-        }
+        return switch (loglevel) {
+            case Log.VERBOSE -> "VERBOSE";
+            case Log.DEBUG -> "DEBUG";
+            case Log.INFO -> "INFO";
+            case Log.WARN -> "WARN";
+            case Log.ERROR -> "ERROR";
+            case Log.ASSERT -> "ASSERT";
+            default -> "UNKNOWN";
+        };
 
-        return "UNKNOWN";
     }
 
 
@@ -256,6 +251,7 @@ public class Ln  {
             return msg;
         }
 
+        @SuppressWarnings("SameParameterValue")
         static String getScope(int skipDepth) {
             if( config.minimumLogLevel <= Log.DEBUG ) {
                 final StackTraceElement[] traces = Thread.currentThread().getStackTrace();
