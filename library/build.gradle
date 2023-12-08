@@ -30,7 +30,7 @@ dependencies {
     //noinspection GradleDependency
     implementation 'com.facebook.rebound:rebound:0.3.8'
     // https://stackoverflow.com/questions/76013397/compiler-error-only-in-android-studio-but-not-in-gradle-build-abstract-base-cla
-    implementation 'androidx.lifecycle:lifecycle-common:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-common:2.6.2'
     //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
