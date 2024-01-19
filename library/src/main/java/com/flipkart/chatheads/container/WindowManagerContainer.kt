@@ -42,12 +42,21 @@ class WindowManagerContainer(context: Context) : FrameChatHeadContainer(context)
         registerReceiver(context)
     }
 
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     private fun registerReceiver(context: Context) {
-        context.registerReceiver(object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                frameLayout?.minimize()
-            }
-        }, IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            context.registerReceiver(object : BroadcastReceiver() {
+                override fun onReceive(context: Context, intent: Intent) {
+                    frameLayout?.minimize()
+                }
+            }, IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS), Context.RECEIVER_NOT_EXPORTED)
+        }else{
+            context.registerReceiver(object : BroadcastReceiver() {
+                override fun onReceive(context: Context, intent: Intent) {
+                    frameLayout?.minimize()
+                }
+            }, IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS))
+        }
     }
 
     private fun setContainerHeight(container: View?, height: Int) {
