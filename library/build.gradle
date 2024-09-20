@@ -3,17 +3,17 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace "com.flipkart.chatheads"
-    compileSdkVersion 33
+    compileSdkVersion 34
     resourcePrefix "chatheads_"
 
     defaultConfig {
         minSdkVersion 21
         //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 33
+        targetSdkVersion 34
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -26,17 +26,17 @@ android {
 
 dependencies {
     //implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     //noinspection GradleDependency
     implementation 'com.facebook.rebound:rebound:0.3.8'
     // https://stackoverflow.com/questions/76013397/compiler-error-only-in-android-studio-but-not-in-gradle-build-abstract-base-cla
-    implementation 'androidx.lifecycle:lifecycle-common:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-common:2.8.6'
     //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 
 buildscript {
-    ext.kotlin_version = '1.8.10'
+    ext.kotlin_version = '2.0.20'
     repositories {
         mavenCentral()
         maven { url 'https://plugins.gradle.org/m2/' }
@@ -46,14 +46,10 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:8.6.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
-
-//configurations {
-//    published
-//}
 
 dependencies {
 }
