@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace "com.flipkart.chatheads"
+    namespace = "com.flipkart.chatheads"
     compileSdkVersion 34
     resourcePrefix "chatheads_"
 
