@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace = "com.flipkart.chatheads"
-    compileSdkVersion 34
+    compileSdkVersion 36
     resourcePrefix "chatheads_"
 
     defaultConfig {
         minSdkVersion 21
-        //noinspection ExpiredTargetSdkVersion
+        //noinspection OldTargetApi,ExpiredTargetSdkVersion
         targetSdkVersion 34
     }
     buildTypes {
@@ -24,6 +24,7 @@ android {
     }
 
     kotlinOptions {
+        //noinspection GrDeprecatedAPIUsage
         jvmTarget = "17"
     }
 }
@@ -34,6 +35,7 @@ dependencies {
     //noinspection GradleDependency
     implementation 'com.facebook.rebound:rebound:0.3.8'
     // https://stackoverflow.com/questions/76013397/compiler-error-only-in-android-studio-but-not-in-gradle-build-abstract-base-cla
+    //noinspection GradleDependency
     implementation 'androidx.lifecycle:lifecycle-common:2.9.1'
     //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
@@ -50,6 +52,7 @@ buildscript {
     }
 
     dependencies {
+        //noinspection AndroidGradlePluginVersion
         classpath 'com.android.tools.build:gradle:8.6.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
